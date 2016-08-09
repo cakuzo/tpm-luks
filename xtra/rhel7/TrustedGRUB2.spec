@@ -1,5 +1,5 @@
 Name:		TrustedGRUB2
-Version:	1.2.1
+Version:	1.4.0
 Release:	1%{?dist}
 Summary:	Trusted boot loader based on grub2
 
