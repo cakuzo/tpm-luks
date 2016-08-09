@@ -4,14 +4,15 @@ if [ "$1" == "-d" ]; then
    trap read debug
 fi
 
+MY_PATH="`dirname \"$0\"`"
 action=$1
 
 mkdir -p src work
 
-url=https://github.com/Sirrix-AG/TrustedGRUB2/archive/1.2.1.tar.gz
-file=TrustedGRUB2-1.2.1.tar.gz
+url=https://github.com/Sirrix-AG/TrustedGRUB2/archive/1.4.0.tar.gz
+file=TrustedGRUB2-1.4.0.tar.gz
 dir=${file%.tar.gz}
-pkg=$dir-1.el7
+pkg=$dir-1.el7.centos
 spec=dist/TrustedGRUB2.spec
 specf=${spec##*/}
 
@@ -22,7 +23,7 @@ specu=TrustedGRUB2.spec
 if [ "$action" == "1" -o -z "$action" ]; then
    [ -f src/${ext1##*/} ] || wget $ext1 -P src
    [ -f src/${ext2##*/} ] || wget $ext2 -P src
-   [ -f src/$specu ] || cp $specu src
+   [ -f src/$specu ] || cp ${MY_PATH}/$specu src
    [ -f src/$file ] || wget $url -O src/$file --no-check-certificate
 fi
 
