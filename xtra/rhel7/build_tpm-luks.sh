@@ -8,7 +8,7 @@ action=$1
 
 mkdir -p src work
 
-url=https://github.com/momiji/tpm-luks
+url=https://github.com/cakuzo/tpm-luks
 file=${url##*/}-0.8.tar.gz
 dir=${file%.tar.gz}
 pkg=$dir-7.el7.centos
@@ -18,7 +18,7 @@ specf=${spec##*/}
 if [ "$action" == "1" -o -z "$action" ]; then
    [ -f src/$file ] || (
       [ -d src/$dir ] && rm -rf src/$dir
-      git clone $url src/$dir
+      git clone -b dev $url src/$dir
       (
       cd src
       tar zcf $file --exclude .git* $dir
